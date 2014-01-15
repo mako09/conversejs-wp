@@ -1,0 +1,223 @@
+# Copyright (C) 2014 converse.js for WordPress
+# This file is distributed under the same license as the converse.js for WordPress package.
+msgid ""
+msgstr ""
+"Project-Id-Version: converse.js for WordPress 0.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/conversejs-wp\n"
+"POT-Creation-Date: 2014-01-14 23:59:01+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: conversejs-wp.php:126
+msgid "Main Settings"
+msgstr ""
+
+#: conversejs-wp.php:127
+msgid "Converse.js URL"
+msgstr ""
+
+#: conversejs-wp.php:128
+msgid "BOSH Server URL"
+msgstr ""
+
+#: conversejs-wp.php:129 conversejs-wp.php:249
+msgid "Prebind"
+msgstr ""
+
+#: conversejs-wp.php:130
+msgid "Allow Contact Requests"
+msgstr ""
+
+#: conversejs-wp.php:131
+msgid "Allow MUC"
+msgstr ""
+
+#: conversejs-wp.php:132
+msgid "Animate"
+msgstr ""
+
+#: conversejs-wp.php:133
+msgid "Auto List Rooms"
+msgstr ""
+
+#: conversejs-wp.php:134
+msgid "Auto Subscribe"
+msgstr ""
+
+#: conversejs-wp.php:135
+msgid "Hide MUC Server"
+msgstr ""
+
+#: conversejs-wp.php:136
+msgid "Show controlbox"
+msgstr ""
+
+#: conversejs-wp.php:137
+msgid "Show Only Online Users"
+msgstr ""
+
+#: conversejs-wp.php:138
+msgid "Use vCards"
+msgstr ""
+
+#: conversejs-wp.php:139
+msgid "XHR User Search"
+msgstr ""
+
+#: conversejs-wp.php:143
+msgctxt "menu"
+msgid "Converse.js"
+msgstr ""
+
+#: conversejs-wp.php:150
+msgid "From where Converse.js is loaded."
+msgstr ""
+
+#: conversejs-wp.php:159
+msgid ""
+"If this is set to false, the Add a contact widget, Contact Requests and "
+"Pending Contacts roster sections will all not appear. Additionally, all "
+"incoming contact requests will be ignored."
+msgstr ""
+
+#: conversejs-wp.php:159
+msgid "Allow users to add one another as contacts"
+msgstr ""
+
+#: conversejs-wp.php:168
+msgid ""
+"Setting this to false will remove the Chatrooms tab from the control box."
+msgstr ""
+
+#: conversejs-wp.php:168
+msgid "Allow multi-user chat (muc) in chatrooms"
+msgstr ""
+
+#: conversejs-wp.php:177
+msgid "Show animations, for example when opening and closing chat boxes."
+msgstr ""
+
+#: conversejs-wp.php:177
+msgid "Show animations"
+msgstr ""
+
+#: conversejs-wp.php:186
+msgid ""
+"If true, and the XMPP server on which the current user is logged in supports "
+"multi-user chat, then a list of rooms on that server will be fetched.  Not "
+"recommended for servers with lots of chat rooms."
+msgstr ""
+
+#: conversejs-wp.php:186
+msgid "List rooms automatically"
+msgstr ""
+
+#: conversejs-wp.php:195
+msgid ""
+"If true, the user will automatically subscribe back to any contact requests."
+msgstr ""
+
+#: conversejs-wp.php:195
+msgid "Subscribe automatically"
+msgstr ""
+
+#: conversejs-wp.php:204
+msgid ""
+"Hide the server input field of the form inside the Room panel of the "
+"controlbox.  Useful if you want to restrict users to a specific XMPP server "
+"of your choosing."
+msgstr ""
+
+#: conversejs-wp.php:204
+msgid "Hide the server input field in the Room panel"
+msgstr ""
+
+#: conversejs-wp.php:213
+msgid ""
+"By default, controlbox is hidden and can be toggled by clicking on any "
+"element in the page with class toggle-online-users.  If this options is set "
+"to true, the controlbox will by default be shown upon page load."
+msgstr ""
+
+#: conversejs-wp.php:213
+msgid "Show controlbox by default"
+msgstr ""
+
+#: conversejs-wp.php:222
+msgid ""
+"If set to true, only online users will be shown in the contacts roster.  "
+"Users with any other status (e.g. away, busy etc.) will not be shown."
+msgstr ""
+
+#: conversejs-wp.php:222
+msgid "Show only online users in roster"
+msgstr ""
+
+#: conversejs-wp.php:231
+msgid ""
+"Determines whether the XMPP server will be queried for roster "
+"contacts&#8217; VCards or not.  VCards contain extra personal information "
+"such as your fullname and avatar image."
+msgstr ""
+
+#: conversejs-wp.php:231
+msgid "Use vCards information"
+msgstr ""
+
+#: conversejs-wp.php:240
+msgid ""
+"There are two ways to add users.  (1)The user inputs a valid JID (Jabber "
+"ID), and the user is added as a pending contact.  (2)The user inputs some "
+"text (for example part of a firstname or lastname), an XHR (Ajax Request) "
+"will be made to a remote server, and a list of matches are returned.  The "
+"user can then choose one of the matches to add as a contact.  This setting "
+"enables the second mechanism, otherwise by default the first will be used."
+msgstr ""
+
+#: conversejs-wp.php:240
+msgid "Search user by AJAX"
+msgstr ""
+
+#: conversejs-wp.php:249
+msgid ""
+"This is useful when you don&#8217;t want to render the login form on the "
+"chat control box with each page load."
+msgstr ""
+
+#: conversejs-wp.php:257
+msgid ""
+"Connections to an XMPP server depend on a BOSH connection manager which acts "
+"as a middle man between HTTP and XMPP."
+msgstr ""
+
+#: conversejs-wp.php:264
+msgid "Converse.js Settings"
+msgstr ""
+
+#: conversejs-wp.php:270
+msgid "Save Changes"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "converse.js for WordPress"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/plugins/conversejs-wp/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Jabber/XMPP client Converse.js for WordPress"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Mako N"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://pasero.net/~mako/"
+msgstr ""
