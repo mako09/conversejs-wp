@@ -26,6 +26,7 @@ class Converse_Js {
 		add_action( 'wp_footer', array( &$this, 'footer' ) );
 
 		/* Settings */
+		register_activation_hook( __FILE__, 'set_defaults' );
 		add_action( 'admin_init', array( &$this, 'settings_init' ) );
 		add_action( 'admin_menu', array( &$this, 'options_add_page' ) );
 	}
@@ -78,18 +79,23 @@ class Converse_Js {
 <script type="text/javascript" src="<?php echo $converse ?>"></script>
 <script type="text/javascript">
 	 var BOSH_SERVICE = '<?php echo ( filter_var( $options['bosh_server'], FILTER_VALIDATE_URL ) ) ? $options['bosh_server'] : 'https://bind.opkode.im'; ?>';
-	 /*
-					if ( wpCookies.get('jid') === null ) {
-	conn = new Strophe.Connection(BOSH_SERVICE);
-	conn.connect('anon.step.im', '', onConnect);
-				}
-	 */
+
+<?php
+			if ($options['prebind']) {
+?>
+		//if ( wpCookies.get('jid') === null ) {
+conn = new Strophe.Connection(BOSH_SERVICE);
+conn.connect('anon.step.im', '', onConnect);
+//}
+
 function onConnect(status) {
 	wpCookies.set('jid', conn.jid);
 	wpCookies.set('sid', conn.sid);
 	wpCookies.set('rid', conn.rid);
 }
-
+<?php
+			}
+?>
 require(['converse'], function (converse) {
     converse.initialize({
         allow_contact_requests: <?php echo ($options['contact_requests']) ? 'true' : 'false'; ?>,
@@ -123,22 +129,43 @@ require(['converse'], function (converse) {
 
 /* ----- settings section -------- */
 
+	public function set_defaults () {
+		$options = get_option('conversjs');
+		if ( !is_array( $options ) ) {
+				$arr = array( "conversejs_url"    => "",
+							  "bosh_server"       => "",
+							  "prebind"           => "",
+							  "contact_requests"  => "on",
+							  "allow_muc"         => "on",
+							  "animate"           => "on",
+							  "list_rooms"        => "",
+							  "auto_subscribe"    => "",
+							  "hide_muc_server"   => "",
+							  "show_controlbox"   => "",
+							  "only_online_users" => "",
+							  "vcards"            => "on",
+							  "xhr_user_search"   => ""
+							  );
+		update_option('conversejs', $arr);
+		}
+	}
+
 	public function settings_init () {
 		register_setting( 'conversejs', 'conversejs' );
-		add_settings_section('main_section', __( 'Main Settings', 'conversejs-wp' ), null, __FILE__ );
-		add_settings_field('conversejs_url', __( 'Converse.js URL', 'conversejs-wp' ), array( &$this, 'conversejs_url' ), __FILE__, 'main_section' );
-		add_settings_field('bosh_server', __( 'BOSH Server URL', 'conversejs-wp' ), array( &$this, 'bosh_server' ), __FILE__, 'main_section' );
-		add_settings_field('prebind', __( 'Prebind', 'conversejs-wp' ), array( &$this, 'prebind' ), __FILE__, 'main_section' );
-		add_settings_field('contact_requests', __( 'Allow Contact Requests', 'conversejs-wp' ), array( &$this, 'contact_requests' ), __FILE__, 'main_section' );
-		add_settings_field('allow_muc', __( 'Allow MUC', 'conversejs-wp' ), array( &$this, 'allow_muc' ), __FILE__, 'main_section' );
-		add_settings_field('animate', __( 'Animate', 'conversejs-wp' ), array( &$this, 'animate' ), __FILE__, 'main_section' );
-		add_settings_field('list_rooms', __( 'Auto List Rooms', 'conversejs-wp' ), array( &$this, 'list_rooms' ), __FILE__, 'main_section' );
-		add_settings_field('auto_subscribe', __( 'Auto Subscribe', 'conversejs-wp' ), array( &$this, 'auto_subscribe' ), __FILE__, 'main_section' );
-		add_settings_field('hide_muc_server', __( 'Hide MUC Server', 'conversejs-wp' ), array( &$this, 'hide_muc_server' ), __FILE__, 'main_section' );
-		add_settings_field('show_controlbox', __( 'Show controlbox', 'conversejs-wp' ), array( &$this, 'show_controlbox' ), __FILE__, 'main_section' );
-		add_settings_field('only_online_users', __( 'Show Only Online Users', 'conversejs-wp' ), array( &$this, 'only_online_users' ), __FILE__, 'main_section' );
-		add_settings_field('vcards', __( 'Use vCards', 'conversejs-wp' ), array( &$this, 'vcards' ), __FILE__, 'main_section' );
-		add_settings_field('xhr_user_search', __( 'XHR User Search', 'conversejs-wp' ), array( &$this, 'xhr_user_search' ), __FILE__, 'main_section' );
+		add_settings_section( 'main_section', __( 'Main Settings', 'conversejs-wp' ), null, __FILE__ );
+		add_settings_field( 'conversejs_url', __( 'Converse.js URL', 'conversejs-wp' ), array( &$this, 'conversejs_url' ), __FILE__, 'main_section' );
+		add_settings_field( 'bosh_server', __( 'BOSH Server URL', 'conversejs-wp' ), array( &$this, 'bosh_server' ), __FILE__, 'main_section' );
+		add_settings_field( 'prebind', __( 'Prebind', 'conversejs-wp' ), array( &$this, 'prebind' ), __FILE__, 'main_section' );
+		add_settings_field( 'contact_requests', __( 'Allow Contact Requests', 'conversejs-wp' ), array( &$this, 'contact_requests' ), __FILE__, 'main_section' );
+		add_settings_field( 'allow_muc', __( 'Allow MUC', 'conversejs-wp' ), array( &$this, 'allow_muc' ), __FILE__, 'main_section' );
+		add_settings_field( 'animate', __( 'Animate', 'conversejs-wp' ), array( &$this, 'animate' ), __FILE__, 'main_section' );
+		add_settings_field( 'list_rooms', __( 'Auto List Rooms', 'conversejs-wp' ), array( &$this, 'list_rooms' ), __FILE__, 'main_section' );
+		add_settings_field( 'auto_subscribe', __( 'Auto Subscribe', 'conversejs-wp' ), array( &$this, 'auto_subscribe' ), __FILE__, 'main_section' );
+		add_settings_field( 'hide_muc_server', __( 'Hide MUC Server', 'conversejs-wp' ), array( &$this, 'hide_muc_server' ), __FILE__, 'main_section' );
+		add_settings_field( 'show_controlbox', __( 'Show controlbox', 'conversejs-wp' ), array( &$this, 'show_controlbox' ), __FILE__, 'main_section' );
+		add_settings_field( 'only_online_users', __( 'Show Only Online Users', 'conversejs-wp' ), array( &$this, 'only_online_users' ), __FILE__, 'main_section' );
+		add_settings_field( 'vcards', __( 'Use vCards', 'conversejs-wp' ), array( &$this, 'vcards' ), __FILE__, 'main_section' );
+		add_settings_field( 'xhr_user_search', __( 'XHR User Search', 'conversejs-wp' ), array( &$this, 'xhr_user_search' ), __FILE__, 'main_section' );
 	}
 
 	public function options_add_page () {
