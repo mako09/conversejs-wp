@@ -38,7 +38,7 @@ class Converse_Js {
 	 * @return void
 	 */
 	public function i18n() {
-		load_plugin_textdomain( 'conversejs', false, basename( dirname( __FILE__ ) ) . '/languages' );
+		load_plugin_textdomain( 'conversejs-wp', false, basename( dirname( __FILE__ ) ) . '/languages' );
 	}
 
 	/**
@@ -83,9 +83,9 @@ class Converse_Js {
 <?php
 			if ($options['prebind']) {
 ?>
-		//if ( wpCookies.get('jid') === null ) {
+//if ( wpCookies.get('jid') === null ) {
 conn = new Strophe.Connection(BOSH_SERVICE);
-conn.connect('anon.step.im', '', onConnect);
+conn.connect('<?php echo $options['prebind_jid'] ?>', '<?php echo $options['prebind_password'] ?>', onConnect);
 //}
 
 function onConnect(status) {
@@ -134,7 +134,6 @@ require(['converse'], function (converse) {
 		if ( !is_array( $options ) ) {
 				$arr = array( "conversejs_url"    => "",
 							  "bosh_server"       => "",
-							  "prebind"           => "",
 							  "contact_requests"  => "on",
 							  "allow_muc"         => "on",
 							  "animate"           => "on",
@@ -144,7 +143,10 @@ require(['converse'], function (converse) {
 							  "show_controlbox"   => "",
 							  "only_online_users" => "",
 							  "vcards"            => "on",
-							  "xhr_user_search"   => ""
+							  "xhr_user_search"   => "",
+							  "prebind"           => "",
+							  "prebind_jid"       => "",
+							  "prebind_password"  => ""
 							  );
 		update_option('conversejs', $arr);
 		}
@@ -155,7 +157,6 @@ require(['converse'], function (converse) {
 		add_settings_section( 'main_section', __( 'Main Settings', 'conversejs-wp' ), null, __FILE__ );
 		add_settings_field( 'conversejs_url', __( 'Converse.js URL', 'conversejs-wp' ), array( &$this, 'conversejs_url' ), __FILE__, 'main_section' );
 		add_settings_field( 'bosh_server', __( 'BOSH Server URL', 'conversejs-wp' ), array( &$this, 'bosh_server' ), __FILE__, 'main_section' );
-		add_settings_field( 'prebind', __( 'Prebind', 'conversejs-wp' ), array( &$this, 'prebind' ), __FILE__, 'main_section' );
 		add_settings_field( 'contact_requests', __( 'Allow Contact Requests', 'conversejs-wp' ), array( &$this, 'contact_requests' ), __FILE__, 'main_section' );
 		add_settings_field( 'allow_muc', __( 'Allow MUC', 'conversejs-wp' ), array( &$this, 'allow_muc' ), __FILE__, 'main_section' );
 		add_settings_field( 'animate', __( 'Animate', 'conversejs-wp' ), array( &$this, 'animate' ), __FILE__, 'main_section' );
@@ -166,6 +167,11 @@ require(['converse'], function (converse) {
 		add_settings_field( 'only_online_users', __( 'Show Only Online Users', 'conversejs-wp' ), array( &$this, 'only_online_users' ), __FILE__, 'main_section' );
 		add_settings_field( 'vcards', __( 'Use vCards', 'conversejs-wp' ), array( &$this, 'vcards' ), __FILE__, 'main_section' );
 		add_settings_field( 'xhr_user_search', __( 'XHR User Search', 'conversejs-wp' ), array( &$this, 'xhr_user_search' ), __FILE__, 'main_section' );
+
+		add_settings_section( 'prebind_section', __( 'Prebind Settings (experimental)', 'conversejs-wp' ), null, __FILE__ );
+		add_settings_field( 'prebind', __( 'Prebind', 'conversejs-wp' ), array( &$this, 'prebind' ), __FILE__, 'prebind_section' );
+		add_settings_field( 'prebind_jid', __( 'JID', 'conversejs-wp' ), array( &$this, 'prebind_jid' ), __FILE__, 'prebind_section' );
+		add_settings_field( 'prebind_password', __( 'password', 'conversejs-wp' ), array( &$this, 'prebind_password' ), __FILE__, 'prebind_section' );
 	}
 
 	public function options_add_page () {
@@ -289,6 +295,24 @@ require(['converse'], function (converse) {
 <?php
 	}
 
+	public function prebind_jid() {
+		$options = get_option('conversejs');
+		$jid = filter_var( $options['prebind_jid'], FILTER_SANITIZE_EMAIL );
+?>
+
+    <input id='prebind_jid' name='conversejs[prebind_jid]' size='20' type='text' title='<?php _e( 'Jabber ID for prebinding.', 'conversejs-wp' ) ?>' value='<?php echo $jid ?>' />
+<?php
+	}
+
+	public function prebind_password() {
+		$options = get_option('conversejs');
+		$password = $options['prebind_password'];
+?>
+
+    <input id='prebind_password' name='conversejs[prebind_password]' size='20' type='text' title='<?php _e( 'Password for prebinding.', 'conversejs-wp' ) ?>' value='<?php echo $password ?>' />
+<?php
+	}
+
 	public function options_page () {
 ?>
     <div class="wrap">
@@ -297,9 +321,7 @@ require(['converse'], function (converse) {
     <?php settings_fields( 'conversejs' ); ?>
     <?php do_settings_sections( __FILE__ ); ?>
 
-    <p class="submit">
-        <input name="Submit" type="submit" class="button-primary" value="<?php esc_attr_e('Save Changes'); ?>" />
-    </p>
+    <?php submit_button(); ?>
     </form>
     </div>
 <?php
