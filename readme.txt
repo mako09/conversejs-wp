@@ -20,5 +20,7 @@ For more information, See [conversejs](https://conversejs.org/).
 2. Activate the plugin using the `Plugins` menu in WordPress.
 
 == Changelog ==
+= 0.5 =
+* Implemented prebind settings
 = 0.1 =
 * Initial release
