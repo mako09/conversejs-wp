@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: converse.js for WordPress 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/conversejs-wp\n"
-"POT-Creation-Date: 2014-01-17 01:48:56+00:00\n"
-"PO-Revision-Date: 2014-01-17 10:49+0900\n"
+"POT-Creation-Date: 2014-01-17 02:21:32+00:00\n"
+"PO-Revision-Date: 2014-01-17 11:25+0900\n"
 "Last-Translator: Mako N <mako@pasero.net>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -27,54 +27,54 @@ msgid "BOSH Server URL"
 msgstr "BOSH サーバーの URL"
 
 #: conversejs-wp.php:166
-msgid "Allow Contact Requests"
-msgstr ""
+msgid "Allow users to add one another as contacts"
+msgstr "名簿への相手先の追加を許可"
 
 #: conversejs-wp.php:167
-msgid "Allow MUC"
-msgstr "グループチャットの許可"
+msgid "Allow multi-user chat (muc) in chatrooms"
+msgstr "グループチャットを許可"
 
 #: conversejs-wp.php:168
 msgid "Language"
 msgstr "言語"
 
 #: conversejs-wp.php:169
-msgid "Animate"
+msgid "Show animations"
 msgstr "アニメーション化"
 
 #: conversejs-wp.php:170
-msgid "Auto List Rooms"
-msgstr "談話室の一覧"
+msgid "List Rooms automatically "
+msgstr "談話室一覧の自動表示"
 
 #: conversejs-wp.php:171
-msgid "Auto Subscribe"
+msgid "Subscribe automatically"
 msgstr "自動承認"
 
 #: conversejs-wp.php:172
-msgid "Hide MUC Server"
-msgstr "談話室サーバーの変更不可"
+msgid "Hide the server input field in the Room panel"
+msgstr "談話室サーバーを隠す"
 
 #: conversejs-wp.php:173
-msgid "Show controlbox"
+msgid "Show controlbox by default"
 msgstr ""
 
 #: conversejs-wp.php:174
-msgid "Show Only Online Users"
-msgstr "オンラインユーザーのみ表示"
+msgid "Show only online users in roster"
+msgstr "名簿にオンラインユーザーのみ表示"
 
 #: conversejs-wp.php:175
-msgid "Use vCards"
-msgstr "vCard の使用"
+msgid "Use vCards information"
+msgstr "vCard 情報の使用"
 
 #: conversejs-wp.php:176
 msgid "XHR User Search"
-msgstr ""
+msgstr "XHR でのユーザー検索"
 
 #: conversejs-wp.php:178
 msgid "Prebind Settings (experimental)"
 msgstr "事前接続の設定 (experimental)"
 
-#: conversejs-wp.php:179 conversejs-wp.php:315
+#: conversejs-wp.php:179
 msgid "Prebind"
 msgstr "事前接続"
 
@@ -102,17 +102,9 @@ msgid ""
 "incoming contact requests will be ignored."
 msgstr ""
 
-#: conversejs-wp.php:202
-msgid "Allow users to add one another as contacts"
-msgstr ""
-
 #: conversejs-wp.php:211
 msgid ""
 "Setting this to false will remove the Chatrooms tab from the control box."
-msgstr ""
-
-#: conversejs-wp.php:211
-msgid "Allow multi-user chat (muc) in chatrooms"
 msgstr ""
 
 #: conversejs-wp.php:217
@@ -163,10 +155,6 @@ msgstr "ロシア語"
 msgid "Show animations, for example when opening and closing chat boxes."
 msgstr ""
 
-#: conversejs-wp.php:243
-msgid "Show animations"
-msgstr ""
-
 #: conversejs-wp.php:252
 msgid ""
 "If true, and the XMPP server on which the current user is logged in supports "
@@ -174,17 +162,9 @@ msgid ""
 "recommended for servers with lots of chat rooms."
 msgstr ""
 
-#: conversejs-wp.php:252
-msgid "List rooms automatically"
-msgstr ""
-
 #: conversejs-wp.php:261
 msgid ""
 "If true, the user will automatically subscribe back to any contact requests."
-msgstr ""
-
-#: conversejs-wp.php:261
-msgid "Subscribe automatically"
 msgstr ""
 
 #: conversejs-wp.php:270
@@ -194,19 +174,11 @@ msgid ""
 "of your choosing."
 msgstr ""
 
-#: conversejs-wp.php:270
-msgid "Hide the server input field in the Room panel"
-msgstr ""
-
 #: conversejs-wp.php:279
 msgid ""
 "By default, controlbox is hidden and can be toggled by clicking on any "
 "element in the page with class toggle-online-users.  If this options is set "
 "to true, the controlbox will by default be shown upon page load."
-msgstr ""
-
-#: conversejs-wp.php:279
-msgid "Show controlbox by default"
 msgstr ""
 
 #: conversejs-wp.php:288
@@ -215,19 +187,11 @@ msgid ""
 "Users with any other status (e.g. away, busy etc.) will not be shown."
 msgstr ""
 
-#: conversejs-wp.php:288
-msgid "Show only online users in roster"
-msgstr ""
-
 #: conversejs-wp.php:297
 msgid ""
 "Determines whether the XMPP server will be queried for roster "
 "contacts&#8217; VCards or not.  VCards contain extra personal information "
 "such as your fullname and avatar image."
-msgstr ""
-
-#: conversejs-wp.php:297
-msgid "Use vCards information"
 msgstr ""
 
 #: conversejs-wp.php:306
@@ -238,10 +202,6 @@ msgid ""
 "will be made to a remote server, and a list of matches are returned.  The "
 "user can then choose one of the matches to add as a contact.  This setting "
 "enables the second mechanism, otherwise by default the first will be used."
-msgstr ""
-
-#: conversejs-wp.php:306
-msgid "Search user by AJAX"
 msgstr ""
 
 #: conversejs-wp.php:315

@@ -163,16 +163,16 @@ require(['converse'], function (converse) {
 		add_settings_section( 'main_section', __( 'Main Settings', 'conversejs-wp' ), null, __FILE__ );
 		add_settings_field( 'conversejs_url', __( 'Converse.js URL', 'conversejs-wp' ), array( &$this, 'conversejs_url' ), __FILE__, 'main_section' );
 		add_settings_field( 'bosh_server', __( 'BOSH Server URL', 'conversejs-wp' ), array( &$this, 'bosh_server' ), __FILE__, 'main_section' );
-		add_settings_field( 'contact_requests', __( 'Allow Contact Requests', 'conversejs-wp' ), array( &$this, 'contact_requests' ), __FILE__, 'main_section' );
-		add_settings_field( 'allow_muc', __( 'Allow MUC', 'conversejs-wp' ), array( &$this, 'allow_muc' ), __FILE__, 'main_section' );
+		add_settings_field( 'contact_requests', __( 'Allow users to add one another as contacts', 'conversejs-wp' ), array( &$this, 'contact_requests' ), __FILE__, 'main_section' );
+		add_settings_field( 'allow_muc', __( 'Allow multi-user chat (muc) in chatrooms', 'conversejs-wp' ), array( &$this, 'allow_muc' ), __FILE__, 'main_section' );
 		add_settings_field( 'language', __( 'Language', 'conversejs-wp' ), array( &$this, 'language' ), __FILE__, 'main_section' );
-		add_settings_field( 'animate', __( 'Animate', 'conversejs-wp' ), array( &$this, 'animate' ), __FILE__, 'main_section' );
-		add_settings_field( 'list_rooms', __( 'Auto List Rooms', 'conversejs-wp' ), array( &$this, 'list_rooms' ), __FILE__, 'main_section' );
-		add_settings_field( 'auto_subscribe', __( 'Auto Subscribe', 'conversejs-wp' ), array( &$this, 'auto_subscribe' ), __FILE__, 'main_section' );
-		add_settings_field( 'hide_muc_server', __( 'Hide MUC Server', 'conversejs-wp' ), array( &$this, 'hide_muc_server' ), __FILE__, 'main_section' );
-		add_settings_field( 'show_controlbox', __( 'Show controlbox', 'conversejs-wp' ), array( &$this, 'show_controlbox' ), __FILE__, 'main_section' );
-		add_settings_field( 'only_online_users', __( 'Show Only Online Users', 'conversejs-wp' ), array( &$this, 'only_online_users' ), __FILE__, 'main_section' );
-		add_settings_field( 'vcards', __( 'Use vCards', 'conversejs-wp' ), array( &$this, 'vcards' ), __FILE__, 'main_section' );
+		add_settings_field( 'animate', __( 'Show animations', 'conversejs-wp' ), array( &$this, 'animate' ), __FILE__, 'main_section' );
+		add_settings_field( 'list_rooms', __( 'List Rooms automatically ', 'conversejs-wp' ), array( &$this, 'list_rooms' ), __FILE__, 'main_section' );
+		add_settings_field( 'auto_subscribe', __( 'Subscribe automatically', 'conversejs-wp' ), array( &$this, 'auto_subscribe' ), __FILE__, 'main_section' );
+		add_settings_field( 'hide_muc_server', __( 'Hide the server input field in the Room panel', 'conversejs-wp' ), array( &$this, 'hide_muc_server' ), __FILE__, 'main_section' );
+		add_settings_field( 'show_controlbox', __( 'Show controlbox by default', 'conversejs-wp' ), array( &$this, 'show_controlbox' ), __FILE__, 'main_section' );
+		add_settings_field( 'only_online_users', __( 'Show only online users in roster', 'conversejs-wp' ), array( &$this, 'only_online_users' ), __FILE__, 'main_section' );
+		add_settings_field( 'vcards', __( 'Use vCards information', 'conversejs-wp' ), array( &$this, 'vcards' ), __FILE__, 'main_section' );
 		add_settings_field( 'xhr_user_search', __( 'XHR User Search', 'conversejs-wp' ), array( &$this, 'xhr_user_search' ), __FILE__, 'main_section' );
 
 		add_settings_section( 'prebind_section', __( 'Prebind Settings (experimental)', 'conversejs-wp' ), null, __FILE__ );
@@ -199,7 +199,7 @@ require(['converse'], function (converse) {
 		if($options['contact_requests']) { $checked = ' checked="checked" '; }
 ?>
 
-    <input <?php echo( $checked ) ?> id='contact_requests' name='conversejs[contact_requests]' type='checkbox' /><label for='contact_requests' title='<?php _e('If this is set to false, the Add a contact widget, Contact Requests and Pending Contacts roster sections will all not appear. Additionally, all incoming contact requests will be ignored.', 'conversejs-wp') ?>'><?php _e('Allow users to add one another as contacts', 'conversejs-wp') ?></label>
+    <input <?php echo( $checked ) ?> id='contact_requests' name='conversejs[contact_requests]' type='checkbox' title='<?php _e('If this is set to false, the Add a contact widget, Contact Requests and Pending Contacts roster sections will all not appear. Additionally, all incoming contact requests will be ignored.', 'conversejs-wp') ?>'/>
 <?php
 	}
 
@@ -208,7 +208,7 @@ require(['converse'], function (converse) {
 		if($options['allow_muc']) { $checked = ' checked="checked" '; }
 ?>
 
-    <input <?php echo( $checked ) ?> id='allow_muc' name='conversejs[allow_muc]' type='checkbox' /><label for='allow_muc' title='<?php _e('Setting this to false will remove the Chatrooms tab from the control box.', 'conversejs-wp') ?>'><?php _e('Allow multi-user chat (muc) in chatrooms', 'conversejs-wp') ?></label>
+    <input <?php echo( $checked ) ?> id='allow_muc' name='conversejs[allow_muc]' type='checkbox' title='<?php _e('Setting this to false will remove the Chatrooms tab from the control box.', 'conversejs-wp') ?>'/>
 <?php
 	}
 
@@ -240,7 +240,7 @@ require(['converse'], function (converse) {
 		if($options['animate']) { $checked = ' checked="checked" '; }
 ?>
 
-    <input <?php echo( $checked ) ?> id='animate' name='conversejs[animate]' type='checkbox' /><label for='animate' title='<?php _e('Show animations, for example when opening and closing chat boxes.', 'conversejs-wp') ?>'><?php _e('Show animations', 'conversejs-wp') ?></label>
+    <input <?php echo( $checked ) ?> id='animate' name='conversejs[animate]' type='checkbox' title='<?php _e('Show animations, for example when opening and closing chat boxes.', 'conversejs-wp') ?>'/>
 <?php
 	}
 
@@ -249,7 +249,7 @@ require(['converse'], function (converse) {
 		if($options['list_rooms']) { $checked = ' checked="checked" '; }
 ?>
 
-    <input <?php echo( $checked ) ?> id='list_rooms' name='conversejs[list_rooms]' type='checkbox' /><label for='list_rooms' title='<?php _e('If true, and the XMPP server on which the current user is logged in supports multi-user chat, then a list of rooms on that server will be fetched.  Not recommended for servers with lots of chat rooms.', 'conversejs-wp') ?>'><?php _e('List rooms automatically', 'conversejs-wp') ?></label>
+    <input <?php echo( $checked ) ?> id='list_rooms' name='conversejs[list_rooms]' type='checkbox' title='<?php _e('If true, and the XMPP server on which the current user is logged in supports multi-user chat, then a list of rooms on that server will be fetched.  Not recommended for servers with lots of chat rooms.', 'conversejs-wp') ?>'/>
 <?php
 	}
 
@@ -258,7 +258,7 @@ require(['converse'], function (converse) {
 		if($options['auto_subscribe']) { $checked = ' checked="checked" '; }
 ?>
 
-    <input <?php echo( $checked ) ?> id='auto_subscribe' name='conversejs[auto_subscribe]' type='checkbox' /><label for='auto_subscribe' title='<?php _e('If true, the user will automatically subscribe back to any contact requests.', 'conversejs-wp') ?>'><?php _e('Subscribe automatically', 'conversejs-wp') ?></label>
+    <input <?php echo( $checked ) ?> id='auto_subscribe' name='conversejs[auto_subscribe]' type='checkbox' title='<?php _e('If true, the user will automatically subscribe back to any contact requests.', 'conversejs-wp') ?>'/ >
 <?php
 	}
 
@@ -267,7 +267,7 @@ require(['converse'], function (converse) {
 		if($options['hide_muc_server']) { $checked = ' checked="checked" '; }
 ?>
 
-    <input <?php echo( $checked ) ?> id='hide_muc_server' name='conversejs[hide_muc_server]' type='checkbox' /><label for='hide_muc_server' title='<?php _e('Hide the server input field of the form inside the Room panel of the controlbox.  Useful if you want to restrict users to a specific XMPP server of your choosing.', 'conversejs-wp') ?>'><?php _e('Hide the server input field in the Room panel', 'conversejs-wp') ?></label>
+    <input <?php echo( $checked ) ?> id='hide_muc_server' name='conversejs[hide_muc_server]' type='checkbox' title='<?php _e('Hide the server input field of the form inside the Room panel of the controlbox.  Useful if you want to restrict users to a specific XMPP server of your choosing.', 'conversejs-wp') ?>'/>
 <?php
 	}
 
@@ -276,7 +276,7 @@ require(['converse'], function (converse) {
 		if($options['show_controlbox']) { $checked = ' checked="checked" '; }
 ?>
 
-    <input <?php echo( $checked ) ?> id='show_controlbox' name='conversejs[show_controlbox]' type='checkbox' /><label for='show_controlbox' title='<?php _e('By default, controlbox is hidden and can be toggled by clicking on any element in the page with class toggle-online-users.  If this options is set to true, the controlbox will by default be shown upon page load.', 'conversejs-wp') ?>'><?php _e('Show controlbox by default', 'conversejs-wp') ?></label>
+    <input <?php echo( $checked ) ?> id='show_controlbox' name='conversejs[show_controlbox]' type='checkbox' title='<?php _e('By default, controlbox is hidden and can be toggled by clicking on any element in the page with class toggle-online-users.  If this options is set to true, the controlbox will by default be shown upon page load.', 'conversejs-wp') ?>'/>
 <?php
 	}
 
@@ -285,7 +285,7 @@ require(['converse'], function (converse) {
 		if($options['only_online_users']) { $checked = ' checked="checked" '; }
 ?>
 
-    <input <?php echo( $checked ) ?> id='only_online_users' name='conversejs[only_online_users]' type='checkbox' /><label for='only_online_users' title='<?php _e('If set to true, only online users will be shown in the contacts roster.  Users with any other status (e.g. away, busy etc.) will not be shown.', 'conversejs-wp') ?>'><?php _e('Show only online users in roster', 'conversejs-wp') ?></label>
+    <input <?php echo( $checked ) ?> id='only_online_users' name='conversejs[only_online_users]' type='checkbox' title='<?php _e('If set to true, only online users will be shown in the contacts roster.  Users with any other status (e.g. away, busy etc.) will not be shown.', 'conversejs-wp') ?>'/>
 <?php
 	}
 
@@ -294,7 +294,7 @@ require(['converse'], function (converse) {
 		if($options['vcards']) { $checked = ' checked="checked" '; }
 ?>
 
-    <input <?php echo( $checked ) ?> id='vcards' name='conversejs[vcards]' type='checkbox' /><label for='vcards' title='<?php _e('Determines whether the XMPP server will be queried for roster contacts&#8217; VCards or not.  VCards contain extra personal information such as your fullname and avatar image.', 'conversejs-wp') ?>'><?php _e('Use vCards information', 'conversejs-wp') ?></label>
+    <input <?php echo( $checked ) ?> id='vcards' name='conversejs[vcards]' type='checkbox' title='<?php _e('Determines whether the XMPP server will be queried for roster contacts&#8217; VCards or not.  VCards contain extra personal information such as your fullname and avatar image.', 'conversejs-wp') ?>'/>
 <?php
 	}
 
@@ -303,7 +303,7 @@ require(['converse'], function (converse) {
 		if($options['xhr_user_search']) { $checked = ' checked="checked" '; }
 ?>
 
-    <input <?php echo( $checked ) ?> id='xhr_user_search' name='conversejs[xhr_user_search]' type='checkbox' /><label for='xhr_user_search' title='<?php _e('There are two ways to add users.  (1)The user inputs a valid JID (Jabber ID), and the user is added as a pending contact.  (2)The user inputs some text (for example part of a firstname or lastname), an XHR (Ajax Request) will be made to a remote server, and a list of matches are returned.  The user can then choose one of the matches to add as a contact.  This setting enables the second mechanism, otherwise by default the first will be used.', 'conversejs-wp') ?>'><?php _e('Search user by AJAX', 'conversejs-wp') ?></label>
+    <input <?php echo( $checked ) ?> id='xhr_user_search' name='conversejs[xhr_user_search]' type='checkbox' title='<?php _e('There are two ways to add users.  (1)The user inputs a valid JID (Jabber ID), and the user is added as a pending contact.  (2)The user inputs some text (for example part of a firstname or lastname), an XHR (Ajax Request) will be made to a remote server, and a list of matches are returned.  The user can then choose one of the matches to add as a contact.  This setting enables the second mechanism, otherwise by default the first will be used.', 'conversejs-wp') ?>'/>
 <?php
 	}
 
@@ -312,7 +312,7 @@ require(['converse'], function (converse) {
 		if($options['prebind']) { $checked = ' checked="checked" '; }
 ?>
 
-    <input <?php echo( $checked ) ?> id='prebind' name='conversejs[prebind]' type='checkbox' /><label for='prebind' title='<?php _e('This is useful when you don&#8217;t want to render the login form on the chat control box with each page load.', 'conversejs-wp') ?>'><?php _e('Prebind', 'conversejs-wp') ?></label>
+    <input <?php echo( $checked ) ?> id='prebind' name='conversejs[prebind]' type='checkbox' title='<?php _e('This is useful when you don&#8217;t want to render the login form on the chat control box with each page load.', 'conversejs-wp') ?>'/>
 <?php
 	}
 
