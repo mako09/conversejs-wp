@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: converse.js for WordPress 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/conversejs-wp\n"
-"POT-Creation-Date: 2014-01-15 11:20:17+00:00\n"
-"PO-Revision-Date: 2014-01-15 20:04+0900\n"
+"POT-Creation-Date: 2014-01-17 01:48:56+00:00\n"
+"PO-Revision-Date: 2014-01-17 10:49+0900\n"
 "Last-Translator: Mako N <mako@pasero.net>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -14,175 +14,223 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: conversejs-wp.php:157
+#: conversejs-wp.php:163
 msgid "Main Settings"
 msgstr "主な設定"
 
-#: conversejs-wp.php:158
+#: conversejs-wp.php:164
 msgid "Converse.js URL"
 msgstr "Converse.js の URL"
 
-#: conversejs-wp.php:159
+#: conversejs-wp.php:165
 msgid "BOSH Server URL"
 msgstr "BOSH サーバーの URL"
 
-#: conversejs-wp.php:160
+#: conversejs-wp.php:166
 msgid "Allow Contact Requests"
 msgstr ""
 
-#: conversejs-wp.php:161
+#: conversejs-wp.php:167
 msgid "Allow MUC"
 msgstr "グループチャットの許可"
 
-#: conversejs-wp.php:162
-msgid "Animate"
-msgstr ""
+#: conversejs-wp.php:168
+msgid "Language"
+msgstr "言語"
 
-#: conversejs-wp.php:163
+#: conversejs-wp.php:169
+msgid "Animate"
+msgstr "アニメーション化"
+
+#: conversejs-wp.php:170
 msgid "Auto List Rooms"
 msgstr "談話室の一覧"
 
-#: conversejs-wp.php:164
+#: conversejs-wp.php:171
 msgid "Auto Subscribe"
 msgstr "自動承認"
 
-#: conversejs-wp.php:165
+#: conversejs-wp.php:172
 msgid "Hide MUC Server"
 msgstr "談話室サーバーの変更不可"
 
-#: conversejs-wp.php:166
+#: conversejs-wp.php:173
 msgid "Show controlbox"
 msgstr ""
 
-#: conversejs-wp.php:167
+#: conversejs-wp.php:174
 msgid "Show Only Online Users"
 msgstr "オンラインユーザーのみ表示"
 
-#: conversejs-wp.php:168
+#: conversejs-wp.php:175
 msgid "Use vCards"
 msgstr "vCard の使用"
 
-#: conversejs-wp.php:169
+#: conversejs-wp.php:176
 msgid "XHR User Search"
 msgstr ""
 
-#: conversejs-wp.php:171
+#: conversejs-wp.php:178
 msgid "Prebind Settings (experimental)"
 msgstr "事前接続の設定 (experimental)"
 
-#: conversejs-wp.php:172 conversejs-wp.php:285
+#: conversejs-wp.php:179 conversejs-wp.php:315
 msgid "Prebind"
 msgstr "事前接続"
 
-#: conversejs-wp.php:173
+#: conversejs-wp.php:180
 msgid "JID"
 msgstr "JID"
 
-#: conversejs-wp.php:174
-msgid "password"
+#: conversejs-wp.php:181
+msgid "Password"
 msgstr "パスワード"
 
-#: conversejs-wp.php:178
+#: conversejs-wp.php:185
 msgctxt "menu"
 msgid "Converse.js"
 msgstr "Converse.js"
 
-#: conversejs-wp.php:186
+#: conversejs-wp.php:193
 msgid "From where Converse.js is loaded."
 msgstr ""
 
-#: conversejs-wp.php:195
+#: conversejs-wp.php:202
 msgid ""
 "If this is set to false, the Add a contact widget, Contact Requests and "
 "Pending Contacts roster sections will all not appear. Additionally, all "
 "incoming contact requests will be ignored."
 msgstr ""
 
-#: conversejs-wp.php:195
+#: conversejs-wp.php:202
 msgid "Allow users to add one another as contacts"
 msgstr ""
 
-#: conversejs-wp.php:204
+#: conversejs-wp.php:211
 msgid ""
 "Setting this to false will remove the Chatrooms tab from the control box."
 msgstr ""
 
-#: conversejs-wp.php:204
+#: conversejs-wp.php:211
 msgid "Allow multi-user chat (muc) in chatrooms"
 msgstr ""
 
-#: conversejs-wp.php:213
+#: conversejs-wp.php:217
+msgid "Afrikaans"
+msgstr "アフリカーンス語"
+
+#: conversejs-wp.php:218
+msgid "German"
+msgstr "ドイツ語"
+
+#: conversejs-wp.php:219
+msgid "English"
+msgstr "英語"
+
+#: conversejs-wp.php:220
+msgid "Spanish"
+msgstr "スペイン語"
+
+#: conversejs-wp.php:221
+msgid "French"
+msgstr "フランス語"
+
+#: conversejs-wp.php:222
+msgid "Hungarian"
+msgstr "ハンガリー語"
+
+#: conversejs-wp.php:223
+msgid "Italian"
+msgstr "イタリア語"
+
+#: conversejs-wp.php:224
+msgid "Japanese"
+msgstr "日本語"
+
+#: conversejs-wp.php:225
+msgid "Dutch"
+msgstr "ドイツ語"
+
+#: conversejs-wp.php:226
+msgid "Portuguese - BRAZIL"
+msgstr "ポルトガル語 (ブラジル)"
+
+#: conversejs-wp.php:227
+msgid "Russian"
+msgstr "ロシア語"
+
+#: conversejs-wp.php:243
 msgid "Show animations, for example when opening and closing chat boxes."
 msgstr ""
 
-#: conversejs-wp.php:213
+#: conversejs-wp.php:243
 msgid "Show animations"
 msgstr ""
 
-#: conversejs-wp.php:222
+#: conversejs-wp.php:252
 msgid ""
 "If true, and the XMPP server on which the current user is logged in supports "
 "multi-user chat, then a list of rooms on that server will be fetched.  Not "
 "recommended for servers with lots of chat rooms."
 msgstr ""
 
-#: conversejs-wp.php:222
+#: conversejs-wp.php:252
 msgid "List rooms automatically"
 msgstr ""
 
-#: conversejs-wp.php:231
+#: conversejs-wp.php:261
 msgid ""
 "If true, the user will automatically subscribe back to any contact requests."
 msgstr ""
 
-#: conversejs-wp.php:231
+#: conversejs-wp.php:261
 msgid "Subscribe automatically"
 msgstr ""
 
-#: conversejs-wp.php:240
+#: conversejs-wp.php:270
 msgid ""
 "Hide the server input field of the form inside the Room panel of the "
 "controlbox.  Useful if you want to restrict users to a specific XMPP server "
 "of your choosing."
 msgstr ""
 
-#: conversejs-wp.php:240
+#: conversejs-wp.php:270
 msgid "Hide the server input field in the Room panel"
 msgstr ""
 
-#: conversejs-wp.php:249
+#: conversejs-wp.php:279
 msgid ""
 "By default, controlbox is hidden and can be toggled by clicking on any "
 "element in the page with class toggle-online-users.  If this options is set "
 "to true, the controlbox will by default be shown upon page load."
 msgstr ""
 
-#: conversejs-wp.php:249
+#: conversejs-wp.php:279
 msgid "Show controlbox by default"
 msgstr ""
 
-#: conversejs-wp.php:258
+#: conversejs-wp.php:288
 msgid ""
 "If set to true, only online users will be shown in the contacts roster.  "
 "Users with any other status (e.g. away, busy etc.) will not be shown."
 msgstr ""
 
-#: conversejs-wp.php:258
+#: conversejs-wp.php:288
 msgid "Show only online users in roster"
 msgstr ""
 
-#: conversejs-wp.php:267
+#: conversejs-wp.php:297
 msgid ""
 "Determines whether the XMPP server will be queried for roster "
 "contacts&#8217; VCards or not.  VCards contain extra personal information "
 "such as your fullname and avatar image."
 msgstr ""
 
-#: conversejs-wp.php:267
+#: conversejs-wp.php:297
 msgid "Use vCards information"
 msgstr ""
 
-#: conversejs-wp.php:276
+#: conversejs-wp.php:306
 msgid ""
 "There are two ways to add users.  (1)The user inputs a valid JID (Jabber "
 "ID), and the user is added as a pending contact.  (2)The user inputs some "
@@ -192,45 +240,45 @@ msgid ""
 "enables the second mechanism, otherwise by default the first will be used."
 msgstr ""
 
-#: conversejs-wp.php:276
+#: conversejs-wp.php:306
 msgid "Search user by AJAX"
 msgstr ""
 
-#: conversejs-wp.php:285
+#: conversejs-wp.php:315
 msgid ""
 "This is useful when you don&#8217;t want to render the login form on the "
 "chat control box with each page load."
 msgstr ""
 
-#: conversejs-wp.php:294
+#: conversejs-wp.php:324
 msgid ""
 "Connections to an XMPP server depend on a BOSH connection manager which acts "
 "as a middle man between HTTP and XMPP."
 msgstr ""
 
-#: conversejs-wp.php:303
+#: conversejs-wp.php:333
 msgid "Jabber ID for prebinding."
 msgstr ""
 
-#: conversejs-wp.php:312
+#: conversejs-wp.php:342
 msgid "Password for prebinding."
 msgstr ""
 
-#: conversejs-wp.php:319
+#: conversejs-wp.php:349
 msgid "Converse.js Settings"
 msgstr "Converse.js の設定"
 
 #. Plugin Name of the plugin/theme
-msgid "converse.js for WordPress"
-msgstr "converse.js for WordPress"
+msgid "Converse.js for WordPress"
+msgstr "Converse.js for WordPress"
 
 #. Plugin URI of the plugin/theme
 msgid "http://wordpress.org/plugins/conversejs-wp/"
 msgstr "http://wordpress.org/plugins/conversejs-wp/"
 
 #. Description of the plugin/theme
-msgid "Jabber/XMPP client Converse.js for WordPress"
-msgstr "Jabber/XMPP クライアント Converse.js を WordPress に組み込みます"
+msgid "Jabber/XMPP client Converse.js for WordPress."
+msgstr "Jabber/XMPP クライアント Converse.js を WordPress に組み込みます。"
 
 #. Author of the plugin/theme
 msgid "Mako N"

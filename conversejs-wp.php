@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: converse.js for WordPress
+ * Plugin Name: Converse.js for WordPress
  * Plugin URI: http://wordpress.org/plugins/conversejs-wp/
- * Description: Jabber/XMPP client Converse.js for WordPress
- * Version: 0.5
+ * Description: Jabber/XMPP client Converse.js for WordPress.
+ * Version: 0.6
  * Author: Mako N
  * Author URI: http://pasero.net/~mako/
  * Text Domain: conversejs-wp
@@ -48,15 +48,20 @@ class Converse_Js {
 	 * @return void
 	 */
 	public function head() {
+		$options = get_option('conversejs');
 		$css = plugin_dir_url( __FILE__ ) . "converse/converse.min.css";
 ?>
 <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $css ?>">
+<?php
+		if ( $options['prebind'] && ! $options['prebind_password'] ) { // for shared roster on anonymous server
+?>
 <style type="text/css">
 .icon-offline:before {
         content: "";
 }
 </style>
 <?php
+		}
 	}
 
 	/**
@@ -83,7 +88,7 @@ class Converse_Js {
 <?php
 			if ($options['prebind']) {
 ?>
-//if ( wpCookies.get('jid') === null ) {
+//if ( wpCookies.get('sid') == null ) {
 conn = new Strophe.Connection(BOSH_SERVICE);
 conn.connect('<?php echo $options['prebind_jid'] ?>', '<?php echo $options['prebind_password'] ?>', onConnect);
 //}
@@ -105,7 +110,7 @@ require(['converse'], function (converse) {
         allow_muc: <?php echo ($options['allow_muc']) ? 'true' : 'false'; ?>,
         animate: <?php echo ($options['animate']) ? 'true' : 'false'; ?>,
         hide_muc_server: <?php echo ($options['hide_muc_server']) ? 'true' : 'false'; ?>,
-        i18n: locales.en, // Refer to ./locale/locales.js
+        i18n: <?php echo ($options['language']) ? 'locales.' . $options['language'] : 'locales.en'; ?>,
 <?php
 			if ($options['prebind']) {
 ?>
@@ -136,6 +141,7 @@ require(['converse'], function (converse) {
 							  "bosh_server"       => "",
 							  "contact_requests"  => "on",
 							  "allow_muc"         => "on",
+							  "language"          => "en",
 							  "animate"           => "on",
 							  "list_rooms"        => "",
 							  "auto_subscribe"    => "",
@@ -159,6 +165,7 @@ require(['converse'], function (converse) {
 		add_settings_field( 'bosh_server', __( 'BOSH Server URL', 'conversejs-wp' ), array( &$this, 'bosh_server' ), __FILE__, 'main_section' );
 		add_settings_field( 'contact_requests', __( 'Allow Contact Requests', 'conversejs-wp' ), array( &$this, 'contact_requests' ), __FILE__, 'main_section' );
 		add_settings_field( 'allow_muc', __( 'Allow MUC', 'conversejs-wp' ), array( &$this, 'allow_muc' ), __FILE__, 'main_section' );
+		add_settings_field( 'language', __( 'Language', 'conversejs-wp' ), array( &$this, 'language' ), __FILE__, 'main_section' );
 		add_settings_field( 'animate', __( 'Animate', 'conversejs-wp' ), array( &$this, 'animate' ), __FILE__, 'main_section' );
 		add_settings_field( 'list_rooms', __( 'Auto List Rooms', 'conversejs-wp' ), array( &$this, 'list_rooms' ), __FILE__, 'main_section' );
 		add_settings_field( 'auto_subscribe', __( 'Auto Subscribe', 'conversejs-wp' ), array( &$this, 'auto_subscribe' ), __FILE__, 'main_section' );
@@ -171,7 +178,7 @@ require(['converse'], function (converse) {
 		add_settings_section( 'prebind_section', __( 'Prebind Settings (experimental)', 'conversejs-wp' ), null, __FILE__ );
 		add_settings_field( 'prebind', __( 'Prebind', 'conversejs-wp' ), array( &$this, 'prebind' ), __FILE__, 'prebind_section' );
 		add_settings_field( 'prebind_jid', __( 'JID', 'conversejs-wp' ), array( &$this, 'prebind_jid' ), __FILE__, 'prebind_section' );
-		add_settings_field( 'prebind_password', __( 'password', 'conversejs-wp' ), array( &$this, 'prebind_password' ), __FILE__, 'prebind_section' );
+		add_settings_field( 'prebind_password', __( 'Password', 'conversejs-wp' ), array( &$this, 'prebind_password' ), __FILE__, 'prebind_section' );
 	}
 
 	public function options_add_page () {
@@ -203,6 +210,29 @@ require(['converse'], function (converse) {
 
     <input <?php echo( $checked ) ?> id='allow_muc' name='conversejs[allow_muc]' type='checkbox' /><label for='allow_muc' title='<?php _e('Setting this to false will remove the Chatrooms tab from the control box.', 'conversejs-wp') ?>'><?php _e('Allow multi-user chat (muc) in chatrooms', 'conversejs-wp') ?></label>
 <?php
+	}
+
+	function language() {
+		$options = get_option('conversejs');
+		$items = array( "af"    => __( 'Afrikaans', 'conversejs-wp' ),
+						"de"    => __( 'German', 'conversejs-wp' ),
+						"en"    => __( 'English', 'conversejs-wp' ),
+						"es"    => __( 'Spanish', 'conversejs-wp' ),
+						"fr"    => __( 'French', 'conversejs-wp' ),
+						"hu"    => __( 'Hungarian', 'conversejs-wp' ),
+						"it"    => __( 'Italian', 'conversejs-wp' ),
+						"ja"    => __( 'Japanese', 'conversejs-wp' ),
+						"nl"    => __( 'Dutch', 'conversejs-wp' ),
+						"pt_BR" => __( 'Portuguese - BRAZIL', 'conversejs-wp' ),
+						"ru"    => __( 'Russian', 'conversejs-wp' )
+						);
+		echo "<select id='language' name='conversejs[language]'>";
+		reset ( $items );
+		while ( list($key, $val) = each( $items ) ) {
+			$selected = ( $options['language'] == $key ) ? 'selected="selected"' : '';
+			echo "<option value='$key' $selected>$val</option>";
+		}
+		echo "</select>";
 	}
 
 	public function animate() {
