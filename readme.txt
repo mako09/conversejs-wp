@@ -2,7 +2,7 @@
 Contributors: mako09
 Tags: chat, converse, jabber, javascript, XMPP
 Requires at least: 3.8
-Tested up to: 3.8
+Tested up to: 3.8.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -20,6 +20,8 @@ For more information, See [conversejs](https://conversejs.org/).
 2. Activate the plugin using the `Plugins` menu in WordPress.
 
 == Changelog ==
+= 0.7 =
+New upstream release
 = 0.6 =
 * Rearranged setup window
 = 0.5 =
