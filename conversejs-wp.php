@@ -3,7 +3,7 @@
  * Plugin Name: Converse.js for WordPress
  * Plugin URI: http://wordpress.org/plugins/conversejs-wp/
  * Description: Jabber/XMPP client Converse.js for WordPress.
- * Version: 0.6.1
+ * Version: 0.7
  * Author: Mako N
  * Author URI: http://pasero.net/~mako/
  * Text Domain: conversejs-wp
